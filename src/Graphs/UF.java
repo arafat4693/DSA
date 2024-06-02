@@ -10,9 +10,9 @@ public class UF {
         Arrays.fill(parent, -1);
     }
 
-    public void union(int n1, int n2){
+    public boolean union(int n1, int n2){
         int r1 = find(n1), r2 = find(n2);
-        if(r1 == r2) return;
+        if(r1 == r2) return false;
 
         if(parent[r1] < parent[r2]){
             parent[r1] += parent[r2];
@@ -21,6 +21,8 @@ public class UF {
             parent[r2] += parent[r1];
             parent[r1] = r2;
         }
+
+        return true;
     }
 
     public int find(int n){
